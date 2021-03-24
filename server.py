@@ -2,18 +2,21 @@
 """Flask server for Spotify Music Comparison web application."""
 
 from flask import Flask, render_template, jsonify, request, redirect
+from jinja2 import StrictUndefined
 
 
 """Server for music app."""
 app = Flask(__name__)
 app.secret_key = "music"
+app.jinja_env.undefined = StrictUndefined
+
 
 @app.route("/", methods=["GET"])
 def homepage():
 
-    return_render("index.html")
+    return render_template("index.html")
 
-    
+
     #api call 
     # ability to compare when button is clicked 
     #after clicking compare then make the api call 
